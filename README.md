@@ -2,15 +2,13 @@
 
 A plugin that offers Flutter support for Wear OS by Google (Android Wear).
 
-__To use this plugin you must set your `minSdkVersion` to `23`.__
+__To use this plugin you must set your `minSdkVersion` to at least `23`.__
 
+## Tutorial
 
-# Tutorial
+[https://medium.com/flutter-community/flutter-building-wearos-app-fedf0f06d1b4](https://medium.com/flutter-community/flutter-building-wearos-app-fedf0f06d1b4)
 
-https://medium.com/flutter-community/flutter-building-wearos-app-fedf0f06d1b4
-
-
-# Widgets
+## Widgets
 
 There currently two widgets provided by the plugin:
 
@@ -51,7 +49,7 @@ class WatchScreen extends StatelessWidget {
 }
 ```
 
-# Old Requirements
+## Old Requirements
 
 **You DO NOT need to modify these files anymore:**
 
@@ -60,8 +58,8 @@ automatically adds all required references and settings.
 
 1. `build.gradle`: _wearable dependencies_
 
-2. `AndroidManifest.xml`: _`WAKE_LOCK` and `android.hardware.type.watch`
-   and `com.google.android.wearable.standalone`._
+2. `AndroidManifest.xml`: _`WAKE_LOCK` and `android.hardware.type.watch`.
+   If you are making a standalone app you still need to add the `com.google.android.wearable.standalone`. meta-data
+   as indicated above.
 
 3. `MainActivity.kt` or `MainActivity.java`: _all `AmbientMode` references._
-

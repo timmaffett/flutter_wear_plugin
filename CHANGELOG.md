@@ -1,13 +1,16 @@
+
 # 2.0.0
+
 - Kotlin ot 1.8.10
-- merged AmbientWidget onUpdate(WearMode) change ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/17  )
-- added namespace to adroid/build.gradle ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/27 )
-- added proguard config so ambient works in release mode ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/24 )
-- fixed enum name to WearMode in README.md  ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/28 or
-      https://github.com/fluttercommunity/flutter_wear_plugin/pull/31 (both same change) )
-- fix README.md to refer to correct number of widgets ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/23 )
+- merged AmbientWidget onUpdate(WearMode) change [PR 17](https://github.com/fluttercommunity/flutter_wear_plugin/pull/17)
+   (this is a breaking change to version number to 2.0.0)
+- added namespace to adroid/build.gradle [PR 27](https://github.com/fluttercommunity/flutter_wear_plugin/pull/27)
+- added proguard config so ambient works in release mode [PR 24](https://github.com/fluttercommunity/flutter_wear_plugin/pull/24)
+- fixed enum name to WearMode in README.md [PR 28](https://github.com/fluttercommunity/flutter_wear_plugin/pull/28) or
+      [PR 31](https://github.com/fluttercommunity/flutter_wear_plugin/pull/31) (both same change)
+- fix README.md to refer to correct number of widgets [PR 23](https://github.com/fluttercommunity/flutter_wear_plugin/pull/23)
 - No longer include standalone app directive in `android/src/main/AndroidManifest.xml', update readme to direct users
-  to add this directive if they need it ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/22 ) 
+  to add this directive if they need it [PR 22](https://github.com/fluttercommunity/flutter_wear_plugin/pull/22)
 
 # 1.1.0
 
@@ -17,10 +20,10 @@
 
 - Null Safety Migration (Finally!)
   - Thanks to Rexios and Peter Ullrich.
-  - Min Dart 2.12 / Flutter 2.5 
+  - Min Dart 2.12 / Flutter 2.5
 - Updated native component versions:
   - Gradle 6.5
-  - Android Gradle Plugin 4.1.0 
+  - Android Gradle Plugin 4.1.0
   - Android compileSdkVersion 31
   - AndroidX Wear 1.2.0
   - Kotlin 1.5.10
