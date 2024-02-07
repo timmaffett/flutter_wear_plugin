@@ -23,7 +23,7 @@ class AmbientMode extends StatefulWidget {
   final Widget? child;
 
   /// Called each time the the wear device triggers an ambient update request.
-  final VoidCallback? onUpdate;
+  final Function(WearMode)? onUpdate;
 
   /// Get current [WearMode].
   static WearMode wearModeOf(BuildContext context) {
@@ -39,7 +39,7 @@ class AmbientMode extends StatefulWidget {
   _AmbientModeState createState() => _AmbientModeState();
 }
 
-class _AmbientModeState extends State<AmbientMode> with AmbientCallback {
+class _AmbientModeState extends State<AmbientMode> implements AmbientCallback {
   var _ambientMode = WearMode.active;
   var _ambientDetails = AmbientDetails(false, false);
 
@@ -72,6 +72,7 @@ class _AmbientModeState extends State<AmbientMode> with AmbientCallback {
   void _updateMode(bool isAmbient) {
     if (mounted) {
       setState(() => _ambientMode = isAmbient ? WearMode.ambient : WearMode.active);
+      if(widget.onUpdate != null) widget.onUpdate!(_ambientMode);
     }
   }
 
@@ -84,8 +85,12 @@ class _AmbientModeState extends State<AmbientMode> with AmbientCallback {
   @override
   void onUpdateAmbient() {
     _updateMode(true);
-    widget.onUpdate?.call();
   }
+  
+  @override
+  void onInvalidateAmbientOffload() {
+  }
+
 }
 
 class _InheritedAmbientMode extends InheritedWidget {

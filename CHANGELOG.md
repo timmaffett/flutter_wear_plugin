@@ -1,3 +1,14 @@
+# 2.0.0
+- Kotlin ot 1.8.10
+- merged AmbientWidget onUpdate(WearMode) change ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/17  )
+- added namespace to adroid/build.gradle ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/27 )
+- added proguard config so ambient works in release mode ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/24 )
+- fixed enum name to WearMode in README.md  ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/28 or
+      https://github.com/fluttercommunity/flutter_wear_plugin/pull/31 (both same change) )
+- fix README.md to refer to correct number of widgets ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/23 )
+- No longer include standalone app directive in `android/src/main/AndroidManifest.xml', update readme to direct users
+  to add this directive if they need it ( https://github.com/fluttercommunity/flutter_wear_plugin/pull/22 ) 
+
 # 1.1.0
 
 - Fix issue with non-windows builds breaking.

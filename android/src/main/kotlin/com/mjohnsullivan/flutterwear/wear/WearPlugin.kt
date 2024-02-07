@@ -6,6 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.google.android.wearable.compat.WearableActivityController
+//import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -22,6 +23,16 @@ class WearPlugin : FlutterPlugin, ActivityAware, MethodCallHandler, LifecycleObs
     private var mActivityBinding: ActivityPluginBinding? = null
     private var mAmbientController: WearableActivityController? = null
 
+/* not right upgrade recommebndation 
+    @Override
+    public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
+        GeneratedPluginRegistrant.registerWith(flutterEngine);
+        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
+                .setMethodCallHandler(
+                    (call, result) -> onMethodCall( call, result );
+        );
+    }
+*/
     companion object {
         const val TAG = "WearPlugin"
         const val BURN_IN_PROTECTION = WearableActivityController.EXTRA_BURN_IN_PROTECTION
@@ -139,6 +150,7 @@ class WearPlugin : FlutterPlugin, ActivityAware, MethodCallHandler, LifecycleObs
 
     inner class WearableAmbientCallback : WearableActivityController.AmbientCallback() {
         override fun onEnterAmbient(ambientDetails: Bundle) {
+            super.onEnterAmbient(ambientDetails)
             val burnInProtection = ambientDetails.getBoolean(BURN_IN_PROTECTION, false)
             val lowBitAmbient = ambientDetails.getBoolean(LOW_BIT_AMBIENT, false)
             mMethodChannel?.invokeMethod("onEnterAmbient", mapOf(
@@ -148,14 +160,17 @@ class WearPlugin : FlutterPlugin, ActivityAware, MethodCallHandler, LifecycleObs
         }
 
         override fun onExitAmbient() {
+            super.onExitAmbient()
             mMethodChannel?.invokeMethod("onExitAmbient", null)
         }
 
         override fun onUpdateAmbient() {
+            super.onUpdateAmbient()
             mMethodChannel?.invokeMethod("onUpdateAmbient", null)
         }
 
         override fun onInvalidateAmbientOffload() {
+            super.onInvalidateAmbientOffload()
             mMethodChannel?.invokeMethod("onInvalidateAmbientOffload", null)
         }
     }

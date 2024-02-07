@@ -12,15 +12,27 @@ https://medium.com/flutter-community/flutter-building-wearos-app-fedf0f06d1b4
 
 # Widgets
 
-There currently three widgets provided by the plugin:
+There currently two widgets provided by the plugin:
 
 * WatchShape: determines whether the watch is square or round.
 * AmbientMode: builder that provides what mode the watch is in. The widget will rebuild whenever the watch changes mode.
 
+## Setup
+
+If you are creating a standalone watch app, add the following to your manifest:
+
+```xml
+<application>
+  <meta-data
+    android:name="com.google.android.wearable.standalone"
+    android:value="true"
+    />
+</application>
+```
 
 ## Example
 
-Typically, all three of these widgets would be used near the root of your app's widget tree:
+Typically, both of those widgets would be used near the root of your app's widget tree:
 
 ```dart
 class WatchScreen extends StatelessWidget {
@@ -30,7 +42,7 @@ class WatchScreen extends StatelessWidget {
       builder: (BuildContext context, WearShape shape, Widget? child) {
         return AmbientMode(
           builder: (context, mode, child) {
-            return mode == Mode.active ? ActiveWatchFace() : AmbientWatchFace();
+            return mode == WearMode.active ? ActiveWatchFace() : AmbientWatchFace();
           },
         );
       },
